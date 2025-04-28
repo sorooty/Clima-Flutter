@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import "../services/location.dart";
-import 'package:http/http.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert' as convert; // => Package for JSON Conversion operations
+import '../services/networking.dart';
+
+const apiKey = '7eadd76060e22de90ed00e18b0b57351';
+double latitude = 0;
+double longitude = 0;
 
 class LoadingScreen extends StatefulWidget {
   @override
@@ -19,66 +21,32 @@ class _LoadingScreenState extends State<LoadingScreen> {
   @override
   void initState() {
     super.initState();
-    getLocation();
+    getLocationData();
   }
 
-  void getLocation() async {
+  void getLocationData() async {
     Location Loc = Location();
+
     await Loc.getCurrentLocation();
-    print(Loc.latitude);
-    print(Loc.longitude);
 
-    // try {
-    //   Position position = await Geolocator.getCurrentPosition(
-    //       locationSettings: locationSettings);
-    //   print(position);
-    // } catch (e) {
-    //   print(e);
-    // }
-  }
+    // We verify that we have the right latitude and longitude (those of the current user) :
+    latitude = Loc.latitude;
+    longitude = Loc.longitude;
 
-  void getData() async {
-    var url = Uri.https(
+    NetworkHelper networkHeper = NetworkHelper(
+        url: Uri.https(
       // => Uri is used to structure the given URL
       'api.openweathermap.org',
       '/data/2.5/weather',
       {
-        'lat': '29',
-        'lon': '129',
-        'appid': 'bd4b2c4ca865d5391d69ec90c73b5b82',
+        'lat': '$latitude',
+        'lon': '$longitude',
+        'appid': apiKey,
       },
-    ); // Corresponding URL to the JSON (complete) => https://api.openweathermap.org/data/2.5/weather?lat=29&lon=129&appid=bd4b2c4ca865d5391d69ec90c73b5b82#
+    ));
 
-    var response = await http.get(url);
+    var weatherData = await networkHeper.getData();
 
-    // print(response.statusCode); -> For testing purposes (observe the different status code we could have for each scenarios).
-    // See the different 'Status Codes' = https://www.restapitutorial.com/httpstatuscodes
-
-    if (response.statusCode == 200) {
-      String data = response.body;
-
-      // var decodedData = convert.jsonDecode(data); for complexity matters, we might store this process inside a variable and then use it with more flexibility.
-
-      // 1 Temperature
-      var Temp = convert.jsonDecode(data)["main"]['temp'];
-      print(Temp);
-
-      // 2 Condition number
-      var Condition = convert.jsonDecode(data)["weather"][0]["id"];
-      print(Condition);
-
-      // 3 City name
-      var CityName = convert.jsonDecode(data)["name"];
-      print(CityName);
-
-      // var longitude = convert.jsonDecode(data)['coord']['lon'];
-      // print(longitude);
-
-      // var weatherDesc = convert.jsonDecode(data)['weather'][0]["icon"];
-      // print(weatherDesc);
-    } else {
-      print('Request failed with status: ${response.statusCode}.');
-    }
   }
 
 // To discover the "throw" command :
@@ -91,7 +59,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
 
   @override
   Widget build(BuildContext context) {
-    getData();
+    // getData();
     return Scaffold();
   }
 
