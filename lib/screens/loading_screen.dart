@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:geolocator/geolocator.dart';
+// import 'package:geolocator/geolocator.dart';
 import "../services/location.dart";
 import '../services/networking.dart';
+import 'location_screen.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 const apiKey = '7eadd76060e22de90ed00e18b0b57351';
 double latitude = 0;
@@ -13,11 +15,6 @@ class LoadingScreen extends StatefulWidget {
 }
 
 class _LoadingScreenState extends State<LoadingScreen> {
-  // final LocationSettings locationSettings = LocationSettings(
-  //   accuracy: LocationAccuracy.bestForNavigation,
-  //   distanceFilter: 100,
-  // );
-
   @override
   void initState() {
     super.initState();
@@ -32,22 +29,44 @@ class _LoadingScreenState extends State<LoadingScreen> {
     // We verify that we have the right latitude and longitude (those of the current user) :
     latitude = Loc.latitude;
     longitude = Loc.longitude;
-
-    NetworkHelper networkHeper = NetworkHelper(
-        url: Uri.https(
+    Uri theUriversion = Uri.https(
       // => Uri is used to structure the given URL
       'api.openweathermap.org',
       '/data/2.5/weather',
       {
-        'lat': '$latitude',
-        'lon': '$longitude',
+        'lat': '${Loc.latitude}',
+        'lon': '${Loc.longitude}',
         'appid': apiKey,
+        'units': 'metric', // Pour avoir la température en degré °C
       },
-    ));
+    );
+
+    NetworkHelper networkHeper = NetworkHelper(url: theUriversion);
 
     var weatherData = await networkHeper.getData();
 
+    Navigator.push(context, MaterialPageRoute(builder: (context) {
+      return LocationScreen(locationWeather: weatherData);
+    }));
   }
+
+  @override
+  Widget build(BuildContext context) {
+    // getData();
+    return Scaffold(
+      body: Center(
+          child: SpinKitDoubleBounce(
+        color: Colors.white,
+        size: 100,
+      )),
+    );
+  }
+
+// Defining a 'location settings' variable to make the usage easier and code lighter.
+  // final LocationSettings locationSettings = LocationSettings(
+  //   accuracy: LocationAccuracy.bestForNavigation,
+  //   distanceFilter: 100,
+  // );
 
 // To discover the "throw" command :
   // smthThatExpectsLessThan10(12);
@@ -57,12 +76,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
   //   }
   // }
 
-  @override
-  Widget build(BuildContext context) {
-    // getData();
-    return Scaffold();
-  }
-
+// Tests and tries for the 'Error-handling' lesson :
   // @override
   // Widget build(BuildContext context) {
   //   String myMargin = "abc";

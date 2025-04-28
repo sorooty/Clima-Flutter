@@ -1,21 +1,22 @@
 import 'package:http/http.dart' as http;
-import 'dart:convert' as convert; // => Package for JSON Conversion operations
+import 'dart:convert'; // => Package for JSON Conversion operations
 
 class NetworkHelper {
   NetworkHelper({required this.url});
 
-  final Uri url;
+  final Uri
+      url; // => Since url-direct access is deprecated, we'll pass an Uri type Url instead of a simple string
+  // see -> https://pub.dev/packages/http/example
 
   Future getData() async {
-    http.Response response = await http.get(url);
+    var response = await http.get(url);
 
     // Corresponding URL to the JSON (complete) => https://api.openweathermap.org/data/2.5/weather?lat=29&lon=129&appid=bd4b2c4ca865d5391d69ec90c73b5b82#
     // print(response.statusCode); -> For testing purposes (observe the different status code we could have for each scenarios).
     // See the different 'Status Codes' = https://www.restapitutorial.com/httpstatuscodes
     if (response.statusCode == 200) {
       String data = response.body;
-      return convert.jsonDecode(data);
-
+      return jsonDecode(data);
     } else {
       print('Request failed with status: ${response.statusCode}.');
     }
