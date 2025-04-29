@@ -4,7 +4,7 @@ Clima App est une application mobile moderne développée avec **Flutter** et **
 
 ---
 
-## 📱 Capture d’écran (à venir)
+## 📱 Capture d’écran 
 
 ![ClimAppImage](images/ClimApp_Logo.png)
 
@@ -96,7 +96,7 @@ Cette application a été développée dans le cadre de ma formation sur Flutter
 
 **Sorooty**  
 Étudiant ingénieur passionné par le développement mobile, web, IA et les technologies cloud.  
-📧 Contact : mailto:senseybalde@gmail.com  
+📧 Contact : senseybalde@gmail.com  
 🔗 [Profil GitHub](https://github.com/sorooty)
 
 ---
