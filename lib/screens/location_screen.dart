@@ -32,8 +32,8 @@ class _LocationScreenState extends State<LocationScreen> {
       if (weatherData == null) {
         temperature = 0;
         weatherIcon = "Error";
-        weatherMess = 'Unable to retrieve weather Data';
-        cityName = 'Unavailable';
+        weatherMess = 'No weather Data';
+        cityName = 'None';
         return;
       }
 
@@ -53,11 +53,12 @@ class _LocationScreenState extends State<LocationScreen> {
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: const AssetImage('images/location_background.jpg'),
+            image: const AssetImage('images/Mountains.jpeg'),
             fit: BoxFit.cover,
             colorFilter: ColorFilter.mode(
                 // ignore: deprecated_member_use
-                Colors.white.withOpacity(0.8), BlendMode.dstATop),
+                Colors.white.withOpacity(0.8),
+                BlendMode.dstATop),
           ),
         ),
         constraints: const BoxConstraints.expand(),
@@ -100,28 +101,78 @@ class _LocationScreenState extends State<LocationScreen> {
                   ),
                 ],
               ),
+              DividerSimple(),
+              Container(
+                height: 200,
+                padding: const EdgeInsets.all(2.0),
+                child: const Image(
+                    height: 200,
+                    width: 200,
+                    image: AssetImage('images/ClimApp_Logo.png')),
+              ),
+              // DividerSimple(),
               Padding(
-                padding: EdgeInsets.only(left: 15.0),
-                child: Row(
-                  children: <Widget>[
-                    Text(
-                      '$temperature°',
-                      style: kTempTextStyle,
-                    ),
-                    const Text(
-                      '☀️',
-                      style: kConditionTextStyle,
-                    ),
-                  ],
-                ),
+                padding: const EdgeInsets.only(right: 10.0),
+                child: Text(
+                    textAlign: TextAlign.right,
+                    cityName,
+                    style: TextStyle(
+                        fontFamily: 'Spartan MB',
+                        fontSize: 70.0,
+                        shadows: const [
+                          Shadow(
+                            blurRadius: 10.0,
+                            color: Color.fromARGB(65, 0, 0, 0),
+                            offset: Offset(3.0, 3.0),
+                          ),
+                        ],
+                        color: Colors.amberAccent.shade400)),
               ),
               Padding(
-                padding: EdgeInsets.only(right: 15.0),
-                child: Text(
-                  "$weatherMess in $cityName !",
-                  textAlign: TextAlign.right,
-                  style: kMessageTextStyle,
+                padding: const EdgeInsets.only(
+                  left: 15.0,
                 ),
+                child: Container(
+                  // decoration: kBoxDecoration2(),
+                  child: Row(
+                    children: <Widget>[
+                      Text(
+                        '$temperature°',
+                        style: kTempTextStyle,
+                      ),
+                      const Text(
+                        '☀️',
+                        style: kConditionTextStyle,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              DividerSimple(),
+              Padding(
+                padding:
+                    const EdgeInsets.only(right: 15.0, left: 10.0, bottom: 6.0),
+                child: Container(
+                  decoration: kBoxDecoration(),
+                  child: Text(
+                    "$weatherMess in $cityName !",
+                    textAlign: TextAlign.center,
+                    style: kMessageTextStyle,
+                  ),
+                ),
+              ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  const Text(
+                    'Made By Sensey. All right reserved.',
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        wordSpacing: 2,
+                        color: Colors.amber,
+                        backgroundColor: Colors.black),
+                  ),
+                ],
               ),
             ],
           ),

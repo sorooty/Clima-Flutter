@@ -16,7 +16,7 @@ class _CityScreenState extends State<CityScreen> {
       body: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('images/city_background.jpg'),
+            image: AssetImage('images/BlueAbstract.png'),
             fit: BoxFit.cover,
           ),
         ),
@@ -31,7 +31,7 @@ class _CityScreenState extends State<CityScreen> {
                     Navigator.pop(context);
                   },
                   child: const Icon(
-                    Icons.arrow_back_ios,
+                    Icons.arrow_back,
                     size: 50.0,
                     color: Colors.white,
                   ),
@@ -47,13 +47,15 @@ class _CityScreenState extends State<CityScreen> {
                   },
                 ),
               ),
-              TextButton(
-                onPressed: () {
-                  Navigator.pop(context, cityName);
-                },
-                child: Text(
-                  'Get Weather',
-                  style: kButtonTextStyle,
+              GestureDetector(
+                child: TextButton(
+                  onPressed: () {
+                    Navigator.pop(context, cityName);
+                  },
+                  child: const Text(
+                    'Get Weather',
+                    style: kButtonTextStyle,
+                  ),
                 ),
               ),
             ],
