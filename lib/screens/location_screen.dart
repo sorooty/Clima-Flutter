@@ -42,7 +42,7 @@ class _LocationScreenState extends State<LocationScreen> {
       cityName = weatherData['name'];
       weatherIcon = weather.getWeatherIcon(condition);
       weatherMess = weather.getMessage(temperature);
-      print(temperature);
+      // print(temperature); for testing purposes
     });
   }
 
