@@ -6,8 +6,20 @@ const apiKey = '7eadd76060e22de90ed00e18b0b57351';
 // double longitude = 0;
 
 class WeatherModel {
+  Future<dynamic> getCiyWeather(String cityName) async {
+    var getCityUrl = Uri.https(
+      // => Uri is used to structure the given URL
+      'api.openweathermap.org',
+      '/data/2.5/weather',
+      {'q': cityName, 'appid': apiKey, 'units': 'metric'},
+    );
 
-  
+    NetworkHelper networkHelper = NetworkHelper(url: getCityUrl);
+
+    var weatherData = await networkHelper.getData();
+    return weatherData;
+  }
+
   Future<dynamic> getLocationWeather() async {
     Location Loc = Location();
 
