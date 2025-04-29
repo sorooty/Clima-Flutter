@@ -23,24 +23,35 @@ class NetworkHelper {
   }
 }
 
-
-
-      //   // var decodedData = convert.jsonDecode(data); for complexity matters, we might store this process inside a variable and then use it with more flexibility.
-
-      //   // 1 Temperature
-      //   var Temp = convert.jsonDecode(data)["main"]['temp'];
-      //   print(Temp);
-
-      //   // 2 Condition number
-      //   var Condition = convert.jsonDecode(data)["weather"][0]["id"];
-      //   print(Condition);
-
-      //   // 3 City name
-      //   var CityName = convert.jsonDecode(data)["name"];
-      //   print(CityName);
-
-      //   // var longitude = convert.jsonDecode(data)['coord']['lon'];
-      //   // print(longitude);
-
-      //   // var weatherDesc = convert.jsonDecode(data)['weather'][0]["icon"];
-      //   // print(weatherDesc);
+/// ------------------------------DOCS---------------------------------------////
+/// /// A helper class to handle network requests and fetch data from a given URL.
+///
+/// The `NetworkHelper` class is designed to work with the `http` package to
+/// perform GET requests and decode JSON responses.
+///
+/// Example usage:
+/// ```dart
+/// var networkHelper = NetworkHelper(url: Uri.parse('https://example.com'));
+/// var data = await networkHelper.getData();
+/// ```
+///
+/// Constructor:
+/// - `NetworkHelper({required Uri url})`: Accepts a `Uri` object representing
+///   the URL to fetch data from.
+///
+/// Properties:
+/// - `url`: A `Uri` object representing the endpoint for the network request.
+///
+/// Methods:
+/// - `Future getData()`: Performs a GET request to the specified `url`. If the
+///   request is successful (status code 200), it decodes the JSON response and
+///   returns it. Otherwise, it prints an error message with the status code.
+///
+/// Notes:
+/// - Ensure that the provided `url` is a valid `Uri` object.
+/// - The method uses `jsonDecode` to parse the response body into a Dart object.
+/// - Handle potential exceptions (e.g., network errors) when using this class.
+///
+/// References:
+/// - [HTTP Status Codes](https://www.restapitutorial.com/httpstatuscodes)
+/// - [http package example](https://pub.dev/packages/http/example)

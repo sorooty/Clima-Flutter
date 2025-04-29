@@ -34,38 +34,4 @@ class _LoadingScreenState extends State<LoadingScreen> {
       )),
     );
   }
-
-// Defining a 'location settings' variable to make the usage easier and code lighter.
-  // final LocationSettings locationSettings = LocationSettings(
-  //   accuracy: LocationAccuracy.bestForNavigation,
-  //   distanceFilter: 100,
-  // );
-
-// To discover the "throw" command :
-  // smthThatExpectsLessThan10(12);
-  // void smthThatExpectsLessThan10(int n) {
-  //   if (n > 10) {
-  //     throw 'n is greater than 10, n should always be less than 10';
-  //   }
-  // }
-
-// Tests and tries for the 'Error-handling' lesson :
-  // @override
-  // Widget build(BuildContext context) {
-  //   String myMargin = "abc";
-  //   double myMarginAsDouble = 0;
-
-  //   try {
-  //     myMarginAsDouble = double.parse(myMargin);
-  //   } catch (e) {
-  //     print("Should be a number not a string !");
-  //   }
-
-  //   return Scaffold(
-  //       body: Container(
-  //     margin: EdgeInsets.all(30.0),
-  //     // margin: EdgeInsets.all(myMarginAsDouble ?? 30) <=> "If the value of the variable is null => we assign a default value (30 in this case)".
-  //     color: Colors.red,
-  //   ));
-  // }
 }

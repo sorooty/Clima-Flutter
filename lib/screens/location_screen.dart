@@ -181,3 +181,44 @@ class _LocationScreenState extends State<LocationScreen> {
     );
   }
 }
+
+/// ----------------------------------------DOCS----------------------------------------------////
+/// The `LocationScreen` class is a stateful widget that displays weather information
+/// for a specific location. It uses the `WeatherModel` class to fetch and display
+/// weather data.
+///
+/// This screen includes the following features:
+/// - Displays the current temperature, weather condition, and city name.
+/// - Allows the user to fetch weather data for their current location.
+/// - Allows the user to search for weather data by entering a city name.
+///
+/// Constructor:
+/// - `LocationScreen({required this.locationWeather})`: Accepts `locationWeather`
+///   as a parameter, which contains the initial weather data.
+///
+/// Properties:
+/// - `locationWeather`: A dynamic object containing the initial weather data.
+///
+/// State:
+/// - `_LocationScreenState`: Manages the state of the `LocationScreen`.
+///
+/// Methods:
+/// - `initState()`: Initializes the state and updates the UI with the initial weather data.
+/// - `updateUI(dynamic weatherData)`: Updates the UI with the provided weather data.
+///   If the data is null, it displays default error messages.
+///
+/// UI Components:
+/// - A background image with a semi-transparent overlay.
+/// - A row with two buttons:
+///   - "Near Me" button: Fetches weather data for the current location.
+///   - "City" button: Navigates to a city search screen and fetches weather data for the selected city.
+/// - Displays the app logo.
+/// - Displays the city name, temperature, and weather condition.
+/// - Displays a message about the weather in the selected city.
+/// - Footer with a copyright message.
+///
+/// Note:
+/// - The `updateUI` method handles null weather data gracefully by displaying default values.
+/// - The `DividerSimple` widget is used for visual separation but is not defined in this file.
+/// - The `kBoxDecoration`, `kBoxDecoration2`, `kTempTextStyle`, `kConditionTextStyle`, and
+///   `kMessageTextStyle` constants are used for styling but are not defined in this file.

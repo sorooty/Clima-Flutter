@@ -1,4 +1,20 @@
 import 'package:flutter/material.dart';
+/// A collection of constants and utility widgets used throughout the application.
+///
+/// ## Constants:
+/// - `kTempTextStyle`: A `TextStyle` for displaying temperature with a large font size.
+/// - `kMessageTextStyle`: A `TextStyle` for displaying messages with a medium font size and alphabetic text baseline.
+/// - `kButtonTextStyle`: A `TextStyle` for buttons with a smaller font size, white color, and custom font family.
+/// - `kConditionTextStyle`: A `TextStyle` for displaying weather conditions with a large font size.
+/// - `kTextfieldInput`: An `InputDecoration` for text fields with a filled white background, rounded borders, and a location icon.
+///
+/// ## Utility Functions:
+/// - `kBoxDecoration()`: Returns a `BoxDecoration` with rounded corners and a blue background color.
+/// - `kBoxDecoration2()`: Returns a `BoxDecoration` with rounded corners and a slightly different blue background color.
+///
+/// ## Widgets:
+/// - `DividerSimple`: A custom `StatelessWidget` that provides a styled divider with a white semi-transparent color,
+///   thickness of 3, and horizontal padding (indent and endIndent).
 
 const kTempTextStyle = TextStyle(
   fontFamily: 'Spartan MB',
@@ -49,8 +65,8 @@ class DividerSimple extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Divider(
-      color: const Color.fromARGB(122, 255, 255, 255),
+    return const Divider(
+      color: Color.fromARGB(122, 255, 255, 255),
       thickness: 3,
       indent: 30,
       endIndent: 30,
