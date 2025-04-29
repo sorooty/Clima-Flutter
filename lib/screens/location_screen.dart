@@ -161,10 +161,10 @@ class _LocationScreenState extends State<LocationScreen> {
                   ),
                 ),
               ),
-              Column(
+              const Column(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  const Text(
+                  Text(
                     'Made By Sensey. All right reserved.',
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
