@@ -1,8 +1,8 @@
 import 'package:geolocator/geolocator.dart';
 
 class Location {
-  late double latitude;
-  late double longitude;
+  double latitude = 0.0;
+  double longitude = 0.0;
 
   final LocationSettings locationSettings = LocationSettings(
     accuracy: LocationAccuracy.low,
