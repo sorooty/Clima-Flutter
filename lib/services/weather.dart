@@ -25,10 +25,6 @@ class WeatherModel {
 
     await Loc.getCurrentLocation();
 
-    // We verify that we have the right latitude and longitude (those of the current user) :
-    // latitude = Loc.latitude;
-    // longitude = Loc.longitude;
-
     // Je stocke l'url au format UrI dans cette variable :
     Uri theUriversion = Uri.https(
       // => Uri is used to structure the given URL
